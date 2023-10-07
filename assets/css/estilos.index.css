@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css?family=Chewy');
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    background-image: url("../../assets/Imge/inicio.jpg");
+    background-size: cover; /* Hace que la imagen ocupe todo el espacio disponible */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Fija la imagen de fondo para que no se desplace con el contenido */
+  }
+ /* Estilos para la barra de navegación en la esquina superior derecha */
+.top-nav {
+  position: absolute;
+  top: 10px; /* Ajusta la distancia desde la parte superior */
+  right: 10px; 
+  z-index: 2;/* Ajusta la distancia desde la parte derecha */
+}
+
+.top-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.top-nav li {
+  display: inline;
+  margin-right: 10px; /* Espacio entre elementos de navegación */
+}
+
+
+/* Estilo normal de los enlaces */
+.top-nav a {
+  text-decoration: none; /* Elimina el subrayado predeterminado */
+  color: #000; /* Color del texto */
+  font-weight: bold; /* Establece el grosor de la fuente */
+  font-size: 15px; /* Tamaño de la fuente */
+  transition: font-size 0.3s, text-decoration 0.3s; /* Transiciones suaves para el tamaño de la fuente y el subrayado */
+}
+
+/* Estilo cuando se pasa el mouse por encima */
+.top-nav a:hover {
+  transform: translate(-50%,-50%);
+  text-decoration: underline; /* Subrayado al pasar el mouse */
+  font-size: 30px; /* Tamaño de la fuente aumentado */
+  background-image:
+  repeating-linear-gradient(
+     135deg,
+     transparent 0,
+     transparent 2px,
+     #c3ed0a 2px,
+     #deed0a 4px
+ );
+ -webkit-background-clip: text;
+     background-clip: text;
+ z-index: -1;
+ -webkit-text-stroke: 2px #200b17;
+ transition: 0.5s;
+}
+
+
+
+/* Estilos adicionales para los elementos de navegación si es necesario */
+
+  *,
+  *:before,
+  *:after{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+  }
+
+  span{
+      position: absolute;
+      transform: translate(-50%,-50%);
+      top: 8%;
+      left: 50%;
+      text-transform: uppercase;
+      font-size: 90px;
+      letter-spacing: 25px;
+      color: #011218;
+      cursor: pointer;
+      z-index: 1; 
+  }
+  span:before{
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: transparent;
+      background-image:
+       repeating-linear-gradient(
+          135deg,
+          transparent 0,
+          transparent 2px,
+          #c3ed0a 2px,
+          #deed0a 4px
+      );
+      -webkit-background-clip: text;
+          background-clip: text;
+      z-index: -1;
+      -webkit-text-stroke: 2px #200b17;
+      transition: 0.5s;
+  }
+  span:hover:before{
+      top: 0.1em;
+      left: 0.1em;
+  }
+  span:after{
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: rgba(92, 8, 8, 0.2);
+      -webkit-text-stroke: 2px #050404;
+      transition: 0.5s;
+  }
+  span:hover:after{
+      top: -0.1em;
+      left: -0.1em;
+  }
+
+.gallery {
+    
+    --g: 8px;   /* the gap */
+    --s: 400px; /* the size */
+    
+    display: grid;
+    border-radius: 50%;
+  }
+  .gallery > img {
+    grid-area: 1/1;
+    width: 550px;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    transform: translate(var(--_x,0),var(--_y,0));
+    cursor: pointer;
+    z-index: 0;
+    transition: .3s, z-index 0s .3s;
+  }
+  .gallery img:hover {
+    --_i: 1;
+    z-index: 1;
+    transition: transform .2s, clip-path .3s .2s, z-index 0s;
+  }
+  .gallery:hover img {
+    transform: translate(0,0);
+  }
+  
+  .gallery > img:nth-child(1) {
+    clip-path: polygon(50% 50%,calc(50%*var(--_i,0)) calc(120%*var(--_i,0)),0 calc(100%*var(--_i,0)),0 0,100% 0,100% calc(100%*var(--_i,0)),calc(100% - 50%*var(--_i,0)) calc(120%*var(--_i,0)));
+    --_y: calc(-1*var(--g))
+  }
+  .gallery > img:nth-child(2) {
+    clip-path: polygon(50% 50%,calc(100% - 120%*var(--_i,0)) calc(50%*var(--_i,0)),calc(100% - 100%*var(--_i,0)) 0,100% 0,100% 100%,calc(100% - 100%*var(--_i,0)) 100%,calc(100% - 120%*var(--_i,0)) calc(100% - 50%*var(--_i,0)));
+    --_x: var(--g)
+  }
+  .gallery > img:nth-child(3) {
+    clip-path: polygon(50% 50%,calc(100% - 50%*var(--_i,0)) calc(100% - 120%*var(--_i,0)),100% calc(100% - 120%*var(--_i,0)),100% 100%,0 100%,0 calc(100% - 100%*var(--_i,0)),calc(50%*var(--_i,0)) calc(100% - 120%*var(--_i,0)));
+    --_y: var(--g)
+  }
+  .gallery > img:nth-child(4) {
+    clip-path: polygon(50% 50%,calc(120%*var(--_i,0)) calc(50%*var(--_i,0)),calc(100%*var(--_i,0)) 0,0 0,0 100%,calc(100%*var(--_i,0)) 100%,calc(120%*var(--_i,0)) calc(100% - 50%*var(--_i,0)));
+    --_x: calc(-1*var(--g))
+  }
+
+/* Estilos para la barra lateral derecha con los iconos de redes sociales */
+.container {
+  position: fixed;
+  bottom: 20px; /* Ajusta la distancia desde la parte inferior */
+  right: 20px; /* Ajusta la distancia desde la parte derecha */
+  z-index: 2; /* Asegura que esté en la parte superior */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.right-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Estilos para los iconos de redes sociales */
+.box a {
+  margin: 10px;
+  text-decoration: none;
+  color: #000; /* Color de los iconos */
+}
+
+.facebook-icon,
+.instagram-icon {
+  width: 40px; /* Tamaño de los iconos */
+  height: 40px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Agrega más estilos según sea necesario para otros iconos de redes sociales */
